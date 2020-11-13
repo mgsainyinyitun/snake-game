@@ -160,7 +160,8 @@ export default class App extends React.Component{
                 <StatusCard
                     speed = {this.state.speed}
                     length = {this.final_length}
-                />      
+                /> 
+                <p className="naming">This Game is Created By - Sai Nyi</p>     
             <div className='game-area'>
                 <StartMessage 
                     start={this.state.start}
