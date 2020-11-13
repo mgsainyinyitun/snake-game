@@ -3,6 +3,8 @@ import './App.css';
 
 import Snake from './Snake';
 import Food from './Food';
+import GameOver from'./GameOver';
+import StartMessage from './StartMessage';
 
 const getRandomCoordinate = ()=>{
     let min = 1;
@@ -15,23 +17,28 @@ const getRandomCoordinate = ()=>{
 
 const initialState = {
     foodDot:getRandomCoordinate(),
+    gameOver:false,
+    start:false,
     speed:200,
     direction:'RIGHT',
     snakeDots:[
-        [0,0],
-        [2,0]
+        [2,2],
+        [4,2]
     ]
 }
 
 export default class App extends React.Component{
     
     constructor(){
+        //console.log("I am constructor")
         super();
         this.state = initialState;
+        this.interval = null;
+        this.final_length = 0;
     }
 
     componentDidMount(){
-        setInterval(this.moveSnake,this.state.speed);
+        //this.interval = setInterval(this.moveSnake,this.state.speed);
         document.onkeydown = this.onKeyDown;
 
     }
@@ -100,6 +107,7 @@ export default class App extends React.Component{
             })
             this.enlargeSnake();
             this.increaseSpeed();
+            this.final_length= this.state.snakeDots.length+1;
         }
     }
     enlargeSnake  = () =>{
@@ -114,22 +122,50 @@ export default class App extends React.Component{
         let currentSpeed = this.state.speed;
         if(currentSpeed>10){
             this.setState({
-                speed:currentSpeed-10,
+                speed:currentSpeed-50,
             })
         }
     }
 
 
     onGameOver= ()=> {
-        alert(`Game Over. Snake's length is ${this.state.snakeDots.length}`);
+        //alert(`Game Over. Snake's length is ${this.state.snakeDots.length}`);
         this.setState(initialState);
+        this.setState({
+            start:true,
+            gameOver:true
+        })
+        this.stop();
+        
+        
+    }
 
+    onStart = ()=>{
+        this.setState({
+            start:true,
+            gameOver:false
+        });
+        this.interval = setInterval(this.moveSnake,this.state.speed);
+        this.final_length=0;
+    }
+
+    stop = () =>{
+        clearInterval(this.interval);
     }
 
 
     render(){
         return(
             <div className='game-area'>
+                <StartMessage 
+                    start={this.state.start}
+                    onStart ={this.onStart}
+                />
+                <GameOver
+                    gameOver = {this.state.gameOver}
+                    onStart={this.onStart}
+                    length={this.final_length}
+                />
                 <Snake 
                     snakeDots = {this.state.snakeDots}
                 />

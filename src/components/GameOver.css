@@ -1,0 +1,26 @@
+.game-over-msg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    background-color: rgba(6, 126, 22);
+    width: 50%;
+    height: 30%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+    border-radius: 10px;
+    box-shadow: 0 10px 8px 0 rgba(0,0,0,0.5);
+}
+
+.restart-btn{
+    width: 30%;
+    background-color: teal;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+}
