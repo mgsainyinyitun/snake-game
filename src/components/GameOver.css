@@ -15,6 +15,9 @@
     z-index: 10;
     border-radius: 10px;
     box-shadow: 0 10px 8px 0 rgba(0,0,0,0.5);
+    animation-name: over-msg;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
 }
 
 .restart-btn{
@@ -23,9 +26,19 @@
     color: white;
     border: 1px solid black;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .restart-btn:hover{
     transform: scale(1.05);
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
+}
+
+@keyframes over-msg{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
 }

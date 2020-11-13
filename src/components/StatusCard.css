@@ -13,7 +13,37 @@
     border-radius: 10px;
     box-shadow: 0 10px 8px 0 rgba(0,0,0,0.5);
 }
+.status-card:hover{
+
+    animation-name: hov-ani;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.start-anni{
+    animation-name: status-annimation;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
 
 .info{
     margin: 1%;
+}
+@keyframes hov-ani{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes status-annimation{
+    0% {
+        color: wheat;
+    }
+    
+    100%{
+        color: red;
+        
+    }
 }

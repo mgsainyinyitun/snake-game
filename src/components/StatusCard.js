@@ -4,9 +4,11 @@ import './StatusCard.css';
 const StatusCard = (props) =>{
     const velocity = Math.floor((2/props.speed)*1000);
     return(
+        <div className="start-anni">
         <div className="status-card">
             <p className="info">LENGTH :: {props.length} </p>
             <p className="info">SPEED :: {velocity} pixel / sec</p>
+        </div>
         </div>
     )
 }
