@@ -24,3 +24,8 @@
     border: 1px solid black;
     border-radius: 15px;
 }
+
+.restart-btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);
+}
