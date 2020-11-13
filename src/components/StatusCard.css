@@ -1,0 +1,15 @@
+.status-card{
+    display: flex;
+    padding: 1%;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-image: linear-gradient(to right, rgba(0,255,200,0.5), rgba(0,0,255,0.5));
+    position: absolute;
+    min-width: 15%;
+    z-index: 10;
+    color: white;
+    top: 20%;
+    left: 10%;
+    border-radius: 10px;
+    box-shadow: 0 10px 8px 0 rgba(0,0,0,0.5);
+}

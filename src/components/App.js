@@ -5,6 +5,7 @@ import Snake from './Snake';
 import Food from './Food';
 import GameOver from'./GameOver';
 import StartMessage from './StartMessage';
+import StatusCard from './StatusCard';
 
 const getRandomCoordinate = ()=>{
     let min = 1;
@@ -122,8 +123,9 @@ export default class App extends React.Component{
         let currentSpeed = this.state.speed;
         if(currentSpeed>10){
             this.setState({
-                speed:currentSpeed-50,
+                speed:currentSpeed-10,
             })
+        }else{
         }
     }
 
@@ -136,8 +138,6 @@ export default class App extends React.Component{
             gameOver:true
         })
         this.stop();
-        
-        
     }
 
     onStart = ()=>{
@@ -156,6 +156,11 @@ export default class App extends React.Component{
 
     render(){
         return(
+            <div>
+                <StatusCard
+                    speed = {this.state.speed}
+                    length = {this.final_length}
+                />      
             <div className='game-area'>
                 <StartMessage 
                     start={this.state.start}
@@ -170,6 +175,7 @@ export default class App extends React.Component{
                     snakeDots = {this.state.snakeDots}
                 />
                 <Food dot={this.state.foodDot}/>
+            </div>
             </div>
         );
     }
