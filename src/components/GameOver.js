@@ -1,7 +1,7 @@
 import React from 'react';
 import './GameOver.css';
 const GameOver = props =>{
-    console.log(props.gameOver);
+    //console.log(props.gameOver);
     if(!props.gameOver){
         return null;
     }

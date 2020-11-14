@@ -6,6 +6,9 @@ import Food from './Food';
 import GameOver from'./GameOver';
 import StartMessage from './StartMessage';
 import StatusCard from './StatusCard';
+import Touch from './Touch';
+
+
 
 const getRandomCoordinate = ()=>{
     let min = 1;
@@ -37,7 +40,9 @@ export default class App extends React.Component{
         this.interval = null;
         this.final_length = 0;
     }
-
+    componentWillUnmount
+    comp
+    componentDidUpdate
     componentDidMount(){
         //this.interval = setInterval(this.moveSnake,this.state.speed);
         document.onkeydown = this.onKeyDown;
@@ -48,6 +53,16 @@ export default class App extends React.Component{
         this.checkOutOfBorder();
         this.checkHitSelf();
         this.checkEatFood();
+    }
+
+    onTouch = (direction)=>{
+        switch(direction){
+            case 'RIGHT': this.setState({direction:'RIGHT'});break;
+            case 'LEFT': this.setState({direction:'LEFT'});break;
+            case 'DOWN':this.setState({direction:'DOWN'});break;
+            case 'UP':this.setState({direction:'UP'});break;
+            default:break; 
+        }
     }
 
     onKeyDown = (e) => {
@@ -61,6 +76,8 @@ export default class App extends React.Component{
             default: break;
         }
     }
+
+
 
 
     moveSnake =()=> {
@@ -153,15 +170,25 @@ export default class App extends React.Component{
         clearInterval(this.interval);
     }
 
+   startTouch = (e)=>{
+       console.log(e.touches[0].clientX);
+   }
+
+   endTouch = (e) =>{
+       console.log(e.changedTouches[0].clientX);
+   }
 
     render(){
         return(
             <div>
+               
                 <StatusCard
                     speed = {this.state.speed}
                     length = {this.final_length}
                 /> 
-                <p className="naming">This Game is Created By - Sai Nyi</p>     
+                <p className="naming">This Game is Created By - Sai Nyi</p> 
+            
+            <Touch onTouch = {this.onTouch}>
             <div className='game-area'>
                 <StartMessage 
                     start={this.state.start}
@@ -177,6 +204,7 @@ export default class App extends React.Component{
                 />
                 <Food dot={this.state.foodDot}/>
             </div>
+            </Touch>
             </div>
         );
     }
