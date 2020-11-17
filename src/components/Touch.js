@@ -17,7 +17,6 @@ class Touch extends React.Component{
     }
 
     startTouch = (e)=>{
-        
         const x = e.touches[0].clientX;
         const y = e.touches[0].clientY
         //console.log(x);

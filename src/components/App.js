@@ -8,6 +8,34 @@ import StartMessage from './StartMessage';
 import StatusCard from './StatusCard';
 import Touch from './Touch';
 
+import Particles from 'react-particles-js';
+
+const parameter = {
+    particles:{
+        number:{
+            value:300,
+            density:{
+                enable:true,
+                value_area:800
+            }
+        }
+    },
+    color:{
+        value:"#FF000"
+    },
+    interactivity:{
+        detect_on:"window",
+        events:{
+            onhover:{
+                enable:true,
+                mode:'repulse'
+            }
+        }
+    }
+
+
+}
+
 
 
 const getRandomCoordinate = ()=>{
@@ -180,8 +208,9 @@ export default class App extends React.Component{
 
     render(){
         return(
+            
             <div>
-               
+                <Particles className='ani-bkg' params={parameter}/>
                 <StatusCard
                     speed = {this.state.speed}
                     length = {this.final_length}
