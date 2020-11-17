@@ -31,6 +31,7 @@ class Touch extends React.Component{
     }
  
     endTouch = (e) =>{
+        
         //console.log(e.changedTouches[0].clientX);
         this.setState({
             stop:{
@@ -44,6 +45,9 @@ class Touch extends React.Component{
 
     detectDirection = ()=>{
         const {start,stop} = this.state;
+        if(stop.x === null && stop.y === null){
+            return;
+        }
         //console.log('startX:',start.x,'startY:',start.y);
         //console.log('stopX:',stop.x,'stopY:',stop.y);
 
