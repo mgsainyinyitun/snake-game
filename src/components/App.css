@@ -1,7 +1,4 @@
-body {
-    height: 100%;
-    overflow: hidden;
-  }
+
 .game-area{
     position: relative;
     width: 600px;
